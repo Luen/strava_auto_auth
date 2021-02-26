@@ -8,12 +8,12 @@ const app = express()
 
 // Ограничить количество одновременных подключений до 1 в минуту
 // чтобы не запустилось сразу несколько Chrome, которые забьют всю память
-const limiter = rateLimit({
-  windowMs: 20 * 1000,
-  max: 1
-})
+//const limiter = rateLimit({
+//  windowMs: 20 * 1000,
+//  max: 1
+//})
 
-app.use(limiter);
+//app.use(limiter);
 
 
 

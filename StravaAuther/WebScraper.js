@@ -1,5 +1,7 @@
 const puppeteer = require('puppeteer')
 
+//https://github.com/vercel/vercel/discussions/4903
+
 async function getCookies(login, password) {
 
   // 'headless': false,

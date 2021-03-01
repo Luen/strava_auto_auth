@@ -21,17 +21,17 @@ Additional Parameters:
 z, x, y:
   Tiles available from 0 to 16 zoom level.
 Mode:
-  All (http://localhost:4000/{z}/{x}/{y}/{size}/all/{color}](http://68.183.65.138:5050/11/1856/1130/512/all/hot)
-  Ride (http://localhost:4000/{z}/{x}/{y}/{size}/ride/{color}](http://68.183.65.138:5050/7/22/50/512/ride/hot)
-  Run (http://localhost:4000/{z}/{x}/{y}/{size}/run/{color}](http://68.183.65.138:5050/7/22/50/512/run/hot)
-  Water (http://localhost:4000/{z}/{x}/{y}/{size}/water/{color}](http://68.183.65.138:5050/7/22/50/512/water/hot)
-  Winter (http://localhost:4000/{z}/{x}/{y}/{size}/winter/{color}](http://68.183.65.138:5050/7/22/50/512/winter/hot)
+  All [http://localhost:4000/{z}/{x}/{y}/{size}/all/{color}](http://68.183.65.138:5050/11/1856/1130/512/all/hot)
+  Ride [http://localhost:4000/{z}/{x}/{y}/{size}/ride/{color}](http://68.183.65.138:5050/7/22/50/512/ride/hot)
+  Run [http://localhost:4000/{z}/{x}/{y}/{size}/run/{color}](http://68.183.65.138:5050/7/22/50/512/run/hot)
+  Water [http://localhost:4000/{z}/{x}/{y}/{size}/water/{color}](http://68.183.65.138:5050/7/22/50/512/water/hot)
+  Winter [http://localhost:4000/{z}/{x}/{y}/{size}/winter/{color}](http://68.183.65.138:5050/7/22/50/512/winter/hot)
 Color:
-  Hot (http://localhost:4000/{z}/{x}/{y}/{size}/{mode}/hot](http://68.183.65.138:5050/7/22/50/512/all/hot)
-  Blue (http://localhost:4000/{z}/{x}/{y}/{size}/{mode}/blue](http://68.183.65.138:5050/7/22/50/512/all/blue)
-  Purple (http://localhost:4000/{z}/{x}/{y}/{size}/{mode}/purple](http://68.183.65.138:5050/7/22/50/512/all/purple)
-  Gray (http://localhost:4000/{z}/{x}/{y}/{size}/{mode}/grey](http://68.183.65.138:5050/7/22/50/512/all/grey)
-  Bluered (http://localhost:4000/{z}/{x}/{y}/{size}/{mode}/bluered](http://68.183.65.138:5050/7/22/50/512/all/bluered)
+  Hot [http://localhost:4000/{z}/{x}/{y}/{size}/{mode}/hot](http://68.183.65.138:5050/7/22/50/512/all/hot)
+  Blue [http://localhost:4000/{z}/{x}/{y}/{size}/{mode}/blue](http://68.183.65.138:5050/7/22/50/512/all/blue)
+  Purple [http://localhost:4000/{z}/{x}/{y}/{size}/{mode}/purple](http://68.183.65.138:5050/7/22/50/512/all/purple)
+  Gray [http://localhost:4000/{z}/{x}/{y}/{size}/{mode}/grey](http://68.183.65.138:5050/7/22/50/512/all/grey)
+  Bluered [http://localhost:4000/{z}/{x}/{y}/{size}/{mode}/bluered](http://68.183.65.138:5050/7/22/50/512/all/bluered)
 
 
 ### Fetching session cookies

@@ -45,7 +45,8 @@ async function getStravaTileUrl(z, x, y, size = 512, mode = 'all', color = 'hot'
     if (!isScraperIdle) {
       console.log('Getting auth params now. Please wait and try again in a few seconds.')
       return false
-    } else if (!authParams) {
+    }
+    if (!authParams) {
       console.log('not authParams')
 
       let authParamsObject = await fetchAuthParamsWithRandomAccount()
@@ -53,7 +54,7 @@ async function getStravaTileUrl(z, x, y, size = 512, mode = 'all', color = 'hot'
         if (authParamsObject.data !== '') {
           authParams = authParamsObject.data
           console.log('authParams ok')
-          console.log(authParams)
+          //console.log(authParams)
         } else {
           console.log('parsed cookies is empty')
           return {
@@ -80,6 +81,7 @@ async function getStravaTileUrl(z, x, y, size = 512, mode = 'all', color = 'hot'
 
 async function isAuthParamsOutdated(testHiResTileURL) {
   const options = {
+    responseType: 'arraybuffer',
     headers: {
       'User-Agent': 'PostmanRuntime/7.26.5',
       'Accept-Encoding': 'gzip, deflate, br',
@@ -141,19 +143,21 @@ async function fetchAuthParams(login, password) {
       data: newAuthParams
     }
   } else {
-    console.log('Scraper is busy and is currently geting auth params.')
-    return {
+    console.log('Scraper is busy and is currently getting auth params.')
+    /*return {
       isError: true,
       data: null
-    }
+    }*/
   }
 }
 
 function createDirectURL(z, x, y, size, mode, color) {
+  console.log(`https://heatmap-external-a.strava.com/tiles/${mode}/${color}/${z}/${x}/${y}.png?px=${size}`)
   return `https://heatmap-external-a.strava.com/tiles/${mode}/${color}/${z}/${x}/${y}.png?px=${size}`
 }
 
 function createURLWithAuthParams(z, x, y, size, mode, color, authParams) {
+  console.log(`https://heatmap-external-a.strava.com/tiles-auth/${mode}/${color}/${z}/${x}/${y}.png?px=${size}${authParams}`)
   return `https://heatmap-external-a.strava.com/tiles-auth/${mode}/${color}/${z}/${x}/${y}.png?px=${size}${authParams}`
 }
 

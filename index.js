@@ -26,9 +26,25 @@ app.get('/', async (req, res, next) => {
   res.end('AnyGIS auto authorization script for Strava Heatmap')
 })
 
+app.get('/StravaAuth/:login/:password/', async (req, res, next) => {
+  const login = req.params.login
+  const password = req.params.password
+  if (!login) return next(error(400, 'No login paramerer'))
+  if (!password) return next(error(400, 'No password paramerer'))
 
-// Redirect to the URL of the tile with the session parameters
-app.get('/:z/:x/:y', async (req, res, next) => {
+  const authedCookies = await auther.fetchAuthParams(login, password)
+  if (authedCookies) {
+    res.end(authedCookies.data)
+    // res.json(authedCookies);
+  } else {
+    //console.error('Wrong password?')
+    //res.end("Wrong password?")
+  }
+
+})
+
+/*
+app.get('temp/:z/:x/:y', async (req, res, next) => {
   const z = req.params.z
   const x = req.params.x
   const y = req.params.y
@@ -42,15 +58,24 @@ app.get('/:z/:x/:y', async (req, res, next) => {
 
   if (urlWithAuthParams) {
     if (!urlWithAuthParams.isError) {
-      res.redirect(urlWithAuthParams.data)
+      //res.redirect(urlWithAuthParams.data)
+      let c = await getContent(urlWithAuthParams.data)
+      console.log(c.data)
+      makeResponseFrom(c, res, next)
+      //makeResponseFrom(result, res, next)
     } else {
       console.error('Internal script error');
       res.status(500).send('Internal script error');
     }
   } else {
-    res.status(500).send('Scraper busy getting auth params.');
+    //408 Request Timeout
+    res.status(408).send('Scraper busy getting auth params.');
+    //res.status(500).send('Scraper busy getting auth params.');
   }
 })
+*/
+
+
 
 // Redirect to the URL of the tile with the session parameters
 app.get('/:z/:x/:y/:size/:mode/:color', async (req, res, next) => {
@@ -74,19 +99,38 @@ app.get('/:z/:x/:y/:size/:mode/:color', async (req, res, next) => {
   if (!urlWithAuthParams.isError) {
     res.redirect(urlWithAuthParams.data)
   } else {
-    res.status(500).send('Internal script error');
+    //res.status(500).send('Internal script error');
   }
 })
 
-app.get('/StravaAuth/:login/:password/', async (req, res, next) => {
-  const login = req.params.login
-  const password = req.params.password
-  if (!login) return next(error(400, 'No login paramerer'))
-  if (!password) return next(error(400, 'No password paramerer'))
 
-  const authedCookies = await auther.fetchAuthParams(login, password)
-  res.end(authedCookies.data)
-  // res.json(authedCookies);
+
+// Redirect to the URL of the tile with the session parameters
+app.get('/:z/:x/:y', async (req, res, next) => {
+  const z = req.params.z
+  const x = req.params.x
+  const y = req.params.y
+
+  if (!isInt(z)) return next(error(400, 'Z must be Intager'))
+  if (z > 16) return next(error(400, 'Z must be greater than 16'))
+  if (!isInt(x)) return next(error(400, 'X must be Intager'))
+  if (!isInt(y)) return next(error(400, 'Y must be Intager'))
+
+  //let urlWithAuthParams = await auther.getStravaTileUrl(z, x, y, 512, 'all', 'hot')
+  let urlWithAuthParams = await auther.getStravaTileUrl(z, x, y)
+
+  if (urlWithAuthParams) {
+    if (!urlWithAuthParams.isError) {
+      res.redirect(urlWithAuthParams.data)
+    } else {
+      console.error('Internal script error');
+      //res.status(500).send('Internal script error');
+    }
+  } else {
+    //408 Request Timeout
+    //res.status(408).send('Scraper busy getting auth params.');
+    //res.status(500).send('Scraper busy getting auth params.');
+  }
 })
 
 // Secondary functions

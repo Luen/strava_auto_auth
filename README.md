@@ -24,34 +24,38 @@ Additional Parameters:
 z, x, y:
 
 - Tiles available from 0 to 16 zoom level.
-  
+
+Size:
+
+- 256 or 512 pixels.
+
 Mode:
 
 - All [http://localhost:4000/{z}/{x}/{y}/{size}/all/{color}](http://68.183.65.138:5050/11/1856/1130/512/all/hot)
-  
+
 - Ride [http://localhost:4000/{z}/{x}/{y}/{size}/ride/{color}](http://68.183.65.138:5050/7/22/50/512/ride/hot)
-  
+
 - Run [http://localhost:4000/{z}/{x}/{y}/{size}/run/{color}](http://68.183.65.138:5050/7/22/50/512/run/hot)
-  
+
 - Water [http://localhost:4000/{z}/{x}/{y}/{size}/water/{color}](http://68.183.65.138:5050/7/22/50/512/water/hot)
-  
+
 - Winter [http://localhost:4000/{z}/{x}/{y}/{size}/winter/{color}](http://68.183.65.138:5050/7/22/50/512/winter/hot)
-  
+
 Color:
 
 - Hot [http://localhost:4000/{z}/{x}/{y}/{size}/{mode}/hot](http://68.183.65.138:5050/7/22/50/512/all/hot)
-  
+
 - Blue [http://localhost:4000/{z}/{x}/{y}/{size}/{mode}/blue](http://68.183.65.138:5050/7/22/50/512/all/blue)
-  
+
 - Purple [http://localhost:4000/{z}/{x}/{y}/{size}/{mode}/purple](http://68.183.65.138:5050/7/22/50/512/all/purple)
-  
-- Gray [http://localhost:4000/{z}/{x}/{y}/{size}/{mode}/grey](http://68.183.65.138:5050/7/22/50/512/all/grey)
-  
+
+- Gray [http://localhost:4000/{z}/{x}/{y}/{size}/{mode}/gray](http://68.183.65.138:5050/7/22/50/512/all/gray)
+
 - Bluered [http://localhost:4000/{z}/{x}/{y}/{size}/{mode}/bluered](http://68.183.65.138:5050/7/22/50/512/all/bluered)
 
 ### Loading tiles
 
-To load Strava heatmap tiles, you have two methods: 
+To load Strava heatmap tiles, you have two methods:
 1. **Loading tiles with cookies**: Sending a GET request for Strava heatmap tile with the cookies. Here is the URL template for this request:
 `GET https://heatmap-external-{abc}.strava.com/tiles-auth/all/hot/{z}/{x}/{y}.png?px=256`
 2. **Loading tiles with HTTP parameters**: Parse JSON response to extract the CloudFront-Signature, CloudFront-Key-Pair-Id, CloudFront-Policy values. Then send a GET request with these values as parameters. Here is the URL template for this request:
